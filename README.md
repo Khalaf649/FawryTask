@@ -62,6 +62,10 @@ An object-oriented e-commerce checkout system designed as part of the Fawry Quan
   - `Seller` (manage product inventory)
   - Possibly role-based permissions via polymorphism
 
+- 📦 **Enhance `ShippableItem` Interface with Quantity**  
+  Currently, the interface only exposes `getName()` and `getWeight()`.  
+  In future iterations, we plan to add a `getQuantity()` method to support more detailed shipping logic and reporting without relying on external reconstruction.
+
 ---
 ## 📊 UML Diagram
 
