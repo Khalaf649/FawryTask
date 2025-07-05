@@ -13,7 +13,7 @@ public class Main {
     public static void main(String[] args) {
         try {
 
-            User customer=new Customer("Khawja","khawja@gmai.com",300000);
+            Customer customer=new Customer("Khawja","khawja@gmai.com",300000);
 
 
             Product cheese = new Cheese("Cheddar Cheese", 150, 5, LocalDate.now().plusDays(5), 0.5);
@@ -24,7 +24,7 @@ public class Main {
             cart.add(tv,1);
             cart.add(scratchCard,10);
             System.out.println(cart.toString());
-            CheckoutService.checkout((Customer) customer,cart);
+            CheckoutService.checkout(customer,cart);
 
 
 
