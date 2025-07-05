@@ -63,7 +63,11 @@ An object-oriented e-commerce checkout system designed as part of the Fawry Quan
   - Possibly role-based permissions via polymorphism
 
 ---
+## 📊 UML Diagram
 
+![UML Diagram](FawryTask_UML.svg)
+
+---
 ## 💡 Summary
 
 This project reflects the foundation of a scalable, testable, and extensible e-commerce system.  
