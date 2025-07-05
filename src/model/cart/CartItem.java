@@ -1,4 +1,5 @@
 package model.cart;
+import model.product.*;
 
 import model.product.Product;
 

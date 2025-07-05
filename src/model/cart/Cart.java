@@ -2,6 +2,7 @@ package model.cart;
 
 import model.product.Product;
 import model.product.Shippable;
+import model.product.ExpirableProduct;
 
 import java.util.*;
 
@@ -21,16 +22,23 @@ public class Cart {
         if (!product.isAvailable(totalRequested)) {
             int available = product.getQuantity();
             throw new IllegalArgumentException(
-                    " Not enough stock for product: " + product.getName() +
-                            ". Already in cart: " + alreadyInCart +
-                            ", New request: " + quantity +
-                            ", Total requested: " + totalRequested +
-                            ", Available: " + available + "." +
+                    "Not enough stock for " + product.getName() +
+                            ". In cart: " + alreadyInCart +
+                            ", Requested: " + quantity +
+                            ", Available: " + available +
                             (available > alreadyInCart
-                                    ? " You can only add " + (available - alreadyInCart) + " more."
-                                    : " Product is out of stock.")
+                                    ? ". You can add up to " + (available - alreadyInCart) + " more."
+                                    : ". Product is out of stock.")
             );
         }
+
+        if (product instanceof ExpirableProduct expirable &&
+                expirable.isExpired()) {
+            throw new IllegalArgumentException("Cannot add expired product: " + product.getName());
+        }
+
+
+
 
         if (itemMap.containsKey(product)) {
             CartItem item = itemMap.get(product);
@@ -82,16 +90,18 @@ public class Cart {
         return itemMap.isEmpty();
     }
 
-    public List<Shippable> getShippableItems() {
-        List<Shippable> result = new ArrayList<>();
+    public List<ShippingItem> getShippableItems() {
+        List<ShippingItem> result = new ArrayList<>();
         for (CartItem item : itemMap.values()) {
             Product p = item.getProduct();
-            if (p instanceof Shippable) {
-                result.add((Shippable) p);
+            if (p instanceof Shippable s) {
+                double totalWeight = s.getWeight() * item.getQuantity();
+                result.add(new ShippingItem(p.getName(), totalWeight));
             }
         }
         return result;
     }
+
 
     @Override
     public String toString() {

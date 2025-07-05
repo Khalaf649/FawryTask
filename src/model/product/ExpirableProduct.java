@@ -36,4 +36,5 @@ public abstract class ExpirableProduct extends Product {
     public String toString() {
         return super.toString() + " | Expires: " + expiryDate;
     }
+
 }

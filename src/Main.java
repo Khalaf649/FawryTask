@@ -2,6 +2,8 @@
 
 import model.product.*;
 import  model.cart.*;
+import model.service.*;
+import  model.user.*;
 
 
 
@@ -11,6 +13,7 @@ public class Main {
     public static void main(String[] args) {
         try {
 
+            User customer=new Customer("Khawja","khawja@gmai.com",300000);
 
 
             Product cheese = new Cheese("Cheddar Cheese", 150, 5, LocalDate.now().plusDays(5), 0.5);
@@ -18,10 +21,12 @@ public class Main {
             Product scratchCard = new MobileScratchCard("Vodafone Card", 50, 10);
             Cart cart = new Cart();
             cart.add(cheese,3);
-            cart.add(cheese,1);
-            cart.update(cheese,5);
-            cart.remove(cheese);
-            System.out.println(cart);
+            cart.add(tv,1);
+            cart.add(scratchCard,10);
+            System.out.println(cart.toString());
+            CheckoutService.checkout((Customer) customer,cart);
+
+
 
 
 
