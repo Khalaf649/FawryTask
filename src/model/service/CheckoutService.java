@@ -17,6 +17,9 @@ public class CheckoutService {
         if (cart == null || cart.isEmpty()) {
             throw new IllegalStateException(" Cart is empty. Cannot checkout.");
         }
+        if (customer == null) {
+            throw new IllegalArgumentException("Customer must not be null.");
+        }
 
         List<CartItem> items = cart.getItems();
 
