@@ -4,15 +4,6 @@ An object-oriented e-commerce checkout system designed as part of the Fawry Quan
 
 ---
 
-## 👥 Team Contribution Notes
-
-This system was designed with a focus on:
-- Code clarity and extensibility
-- Domain-driven design
-- Preparation for future enhancements and scaling
-
----
-
 ## ✅ Core Features
 
 - **Product System**  
