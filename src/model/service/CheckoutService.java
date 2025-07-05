@@ -58,15 +58,24 @@ public class CheckoutService {
             item.getProduct().adjustQuantity(-item.getQuantity());
         }
 
-        // 5. Print receipt
-        System.out.println("\n🧾 Checkout Receipt:");
-        System.out.println(customer);
-        System.out.println(cart);
-        System.out.printf("Shipping fees: %.2f EGP%n", shippingFees);
-        System.out.printf("Total paid: %.2f EGP%n", total);
-        System.out.printf("Remaining balance: %.2f EGP%n", customer.getBalance());
 
-        // 6. Ship items
         ShippingService.shipItems(shippables);
+
+        // 5. Print receipt
+        System.out.println("\n** Checkout receipt **");
+
+        for (CartItem item : cart.getItems()) {
+            String label = item.getQuantity() + "x " + item.getProduct().getName();
+            System.out.printf("%-15s %6.0f%n", label, item.getTotalPrice());
+        }
+
+        System.out.println("----------------------");
+        System.out.printf("%-15s %6.0f%n", "Subtotal", subtotal);
+        System.out.printf("%-15s %6.0f%n", "Shipping", shippingFees);
+        System.out.printf("%-15s %6.0f%n", "Amount", total);
+
+
+
+
     }
 }

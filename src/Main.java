@@ -16,14 +16,13 @@ public class Main {
             Customer customer=new Customer("Khawja","khawja@gmai.com",300000);
 
 
-            Product cheese = new Cheese("Cheddar Cheese", 150, 5, LocalDate.now().plusDays(5), -0.5);
+            Product cheese = new Cheese("Cheddar Cheese", 150, 5, LocalDate.now().plusDays(5), 0.5);
             Product tv = new TV("Samsung 55-inch", 7000, 2, 8.0);
             Product scratchCard = new MobileScratchCard("Vodafone Card", 50, 10);
             Cart cart = new Cart();
             cart.add(cheese,3);
             cart.add(tv,1);
             cart.add(scratchCard,10);
-            System.out.println(cart.toString());
             CheckoutService.checkout(customer,cart);
 
 

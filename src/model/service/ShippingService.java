@@ -24,15 +24,18 @@ public class ShippingService {
         }
 
         double totalWeight = 0;
-        System.out.println("\n Shipping the following items:");
+        System.out.println("** Shipment notice **");
 
         for (Shippable item : items) {
-            System.out.printf(" - %s (%.2f kg)%n", item.getName(), item.getWeight());
-            totalWeight += item.getWeight();
+            double weight = item.getWeight(); // total weight in kg
+            int grams = (int) (weight * 1000);
+            totalWeight += weight;
+
+            // Expect name to already include quantity (e.g., "2x Cheese")
+            System.out.printf("%-15s %4dg%n", item.getName(), grams);
         }
 
-        double shippingFee = totalWeight * SHIPPING_RATE_PER_KG;
-        System.out.printf(" Total weight: %.2f kg%n", totalWeight);
-        System.out.printf("Shipping fee: %.2f EGP%n", shippingFee);
+        System.out.printf("Total package weight %.1fkg%n", totalWeight);
     }
-}
+    }
+
