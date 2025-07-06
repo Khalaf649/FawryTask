@@ -73,6 +73,7 @@ public class CheckoutService {
         System.out.printf("%-15s %6.0f%n", "Subtotal", subtotal);
         System.out.printf("%-15s %6.0f%n", "Shipping", shippingFees);
         System.out.printf("%-15s %6.0f%n", "Amount", total);
+        cart.clear();
 
 
 

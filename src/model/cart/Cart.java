@@ -118,4 +118,8 @@ public class Cart {
         if (product == null) throw new IllegalArgumentException("Product cannot be null.");
         if (quantity <= 0) throw new IllegalArgumentException("Quantity must be greater than 0.");
     }
+    public void clear() {
+        itemMap.clear();
+        subtotal = 0.0;
+    }
 }

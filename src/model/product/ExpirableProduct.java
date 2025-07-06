@@ -29,7 +29,7 @@ public abstract class ExpirableProduct extends Product {
     }
 
     public boolean isExpired() {
-        return LocalDate.now().isAfter(expiryDate);
+        return !expiryDate.isAfter(LocalDate.now());
     }
 
     @Override
